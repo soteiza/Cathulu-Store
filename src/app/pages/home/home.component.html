@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+            <div class="sidebar-header">
+            </div>
+        
+        <ul class="list-unstyled components">            
+            <li>
+                <a href="#" style="cursor: pointer;">Inicio <i class="fa fa-home" aria-hidden="true"></i></a>
+            </li>
+            <li class="">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gestión de Personal <i class="fa fa-cogs" aria-hidden="true"></i></a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">                    
+                    <li>
+                        <a class="nav-link" (click)="seccionUsuarios()" style="cursor: pointer;">Ver personal <i class="fa fa-users" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" (click)="agregarUsuario()" style="cursor: pointer;">Agregar personal <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </li>   
+            <li>
+                <a class="nav-link" (click)="infoJuegos()" style="cursor: pointer;">Ver Juegos de Mesa <i class="fa fa-search" aria-hidden="true"></i></a>
+            </li>  
+            <li>
+                <a class="nav-link" href="notfound" style="cursor: pointer;">Ejemplo 404 Not Found <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>
+            </li>        
+        </ul>
+     </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <h2>Sistema de Gestión Cathulu Store</h2>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">                            
+                            <a class="nav-link" (click)="cerrarSesion()" style="cursor: pointer; color: blue; text-decoration: underline;">Cerrar Sesión <i class="fa fa-power-off"></i></a> 
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <router-outlet></router-outlet>
+    </div>
+</div>

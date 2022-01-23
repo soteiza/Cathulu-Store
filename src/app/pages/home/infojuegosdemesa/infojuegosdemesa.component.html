@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span class="badge" style="background-color: #3b866a; color: rgb(255, 255, 255);">
+                        Home
+                    </span>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="badge" style="background-color: #3b866a; color: rgb(255, 255, 255);">
+                        Juegos de Mesa
+                    </span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    
+    <div class="col-md-12" >
+        <ul class="gamebox" style="list-style-type: none;">
+            <li *ngFor="let juego of juegosCopia?.games"> 
+                <div id="container1" >
+                    <div class="product-details" style="overflow-x: auto;">            
+                        <h1>{{juego.name}}</h1>
+                    <p> <span class="hint-star star" *ngIf="juego.average_user_rating > 0 && juego.average_user_rating < 1">
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </span>   
+                        
+                        <span class="hint-star star" *ngIf="juego.average_user_rating > 1 && juego.average_user_rating < 2">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </span> 
+
+                        <span class="hint-star star" *ngIf="juego.average_user_rating > 2 && juego.average_user_rating < 3">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </span> 
+
+                        <span class="hint-star star" *ngIf="juego.average_user_rating > 3 && juego.average_user_rating < 4">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </span> 
+
+                        <span class="hint-star star" *ngIf="juego.average_user_rating > 4 && juego.average_user_rating < 5">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </span> 
+
+                        <span class="hint-star star" *ngIf="juego.average_user_rating > 5">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </span> 
+                    </p>          
+                        <p class="information">{{juego.description_preview}}</p>
+                    </div>
+            
+                    <div class="product-image">            
+                        <img src="{{juego.image_url}}" alt="">
+                        <div class="info">
+                            <h2> Información</h2>
+                            <ul>
+                                <li><strong>Dificultad : </strong>{{juego.average_learning_complexity | number: '1.2-2'}} (de 5) </li>
+                                <li><strong>Nº Jugadores : </strong>{{juego.min_players}} - {{juego.max_players}}</li>
+                                <li><strong>Edad: </strong>{{juego.min_age}}</li>
+                                <li><strong>Duración: </strong>{{juego.min_playtime}} - {{juego.max_playtime}} min.</li>
+                                <li><strong>Precio: </strong>{{juego.price_text}} </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+	
+       
+        
+    
+    
+
+    
+</div>

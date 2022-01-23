@@ -1,0 +1,113 @@
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span class="badge" style="background-color: #3b866a; color: rgb(255, 255, 255);">
+                        Home
+                    </span>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="badge" style="background-color: #3b866a; color: rgb(255, 255, 255);">
+                        Gestión Personal
+                    </span>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="badge" style="background-color: #3b866a; color: rgb(255, 255, 255);">
+                        Ver Personal
+                    </span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="col-md-12" >
+        <div class="row justify-content-end">
+            <div class="col-8">
+                <input type="search" class="form-control" placeholder="Buscar juego..." (keyup)="filtraUsuario($event)"> 
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addUser"> Agregar nuevo usuario <i class="fa fa-user-plus" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-12" style=" background-color: rgb(255, 255, 255); height: 700px; overflow-x: auto;">
+        <table  class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre Personal</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Fecha Nacimiento</th>
+                    <th scope="col">Sueldo</th>
+                    <th scope="col">Contraseña</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>  
+                <tr *ngFor="let user of usuariosCopia" style="background-color: #ffffff;">
+                    <td scope="row"> {{user.id}} </td>
+                    <td scope="row"> {{user.nombre}} </td>
+                    <td scope="row"> {{user.correo}} </td>
+                    <td scope="row"> {{user.fechaNacimiento | date: 'dd/MM/yyyy'}} </td>
+                    <td scope="row"> {{user.sueldo | moneda  }} </td>
+                    <td scope="row"> {{ user.contrasena | password }}</td>
+                    <td scope="row"> 
+                        <div class="btn-group">
+                            <button class="btn btn-danger" (click)="eliminarUsuario(user.nombre, user.id)">
+                                Eliminar <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUserLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header" style="background-color: #0480be; color: #ffffff;">
+              <h5 class="modal-title" id="addUserLabel">Agregar usuario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]= "formUser">
+                  <div class="row">
+                      <div class="form-group col-md-6">
+                          <label for="">Nombre de usuario <i class="fa fa-user-circle" aria-hidden="true"></i></label>
+                          <input type="text" class="form-control" placeholder="nombre de usuario" formControlName="nombre">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="">Email <i class="fa fa-envelope-o" aria-hidden="true"></i></label>
+                          <input type="email" class="form-control" placeholder="email del usuario" formControlName="correo">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="">Fecha de nacimiento <i class="fa fa-birthday-cake" aria-hidden="true"></i></label>
+                          <input type="date" class="form-control" formControlName="fechaNacimiento">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="">Sueldo <i class="fa fa-money" aria-hidden="true"></i></label>
+                          <input type="number" class="form-control" placeholder="sueldo" formControlName="sueldo">
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" [disabled]="!formUser.valid" (click)="agregarUsuario()" >Guardar Usuario <i class="fa fa-user-plus" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar <i class="fa fa-times" aria-hidden="true"></i></button>              
+          </div>
+      </div>
+  </div>
+</div>
+
+

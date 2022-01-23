@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span class="badge" style="background-color: #3b866a; color: rgb(255, 255, 255);">
+                        Home
+                    </span>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="badge" style="background-color: #3b866a; color: rgb(255, 255, 255);">
+                        Gestión Personal
+                    </span>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="badge" style="background-color: #3b866a; color: rgb(255, 255, 255);">
+                        Agregar Personal
+                    </span>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    
+    <div class="col-md-11" >
+        <div class="modal-content">
+        <div class="modal-body">
+            <form [formGroup]= "formUser">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="">Nombre de usuario <i class="fa fa-user-circle" aria-hidden="true"></i></label>
+                        <input type="text" class="form-control" placeholder="nombre de usuario" formControlName="nombre">
+                        <div class="mb-12" *ngIf="formUser.get('nombre').errors && formUser.get('nombre').dirty">
+                            <span class="alert-danger" *ngIf="formUser.get('nombre').hasError('required')"> 
+                                El nombre es un campo requerido.
+                            </span>
+                            <span class="alert-danger" *ngIf="formUser.controls['nombre'].hasError('minlength')"> 
+                                La nombre debe tener 5 caracteres mínimo.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Email <i class="fa fa-envelope-o" aria-hidden="true"></i></label>
+                        <input type="email" class="form-control" placeholder="correo@ejemplo.com" formControlName="correo">
+                        <div class="mb-12" *ngIf="formUser.get('correo').errors && formUser.get('correo').dirty">
+                            <span class="alert-danger" *ngIf="formUser.get('correo').hasError('required')"> 
+                                El correo es requerido.
+                            </span>
+                            <span class="alert-danger" *ngIf="formUser.controls['correo'].hasError('minlength')"> 
+                                El correo debe tener 5 caracteres mínimo.
+                            </span>
+                            <span class="alert-danger" *ngIf="formUser.controls['correo'].hasError('maxlength')"> 
+                                El correo debe tener 20 caracteres máximo.
+                            </span>
+                            <span class="alert-danger" *ngIf="formUser.get('correo').errors.pattern"> 
+                                El formato del correo no es válido.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Fecha de nacimiento <i class="fa fa-birthday-cake" aria-hidden="true"></i></label>
+                        <input type="date" class="form-control" formControlName="fechaNacimiento">
+                        <div class="mb-12" *ngIf="formUser.get('fechaNacimiento').errors && formUser.get('fechaNacimiento').dirty">
+                            <span class="alert-danger" *ngIf="formUser.get('fechaNacimiento').hasError('required')"> 
+                                La fecha de nacimiento es un campo requerido.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Sueldo en dolares <i class="fa fa-money" aria-hidden="true"></i></label>
+                        <input type="number" class="form-control" placeholder="sueldo" formControlName="sueldo">
+                        <div class="mb-12" *ngIf="formUser.get('sueldo').errors && formUser.get('sueldo').dirty">
+                            <span class="alert-danger" *ngIf="formUser.get('sueldo').hasError('required')"> 
+                                El sueldo es requerido
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" [disabled]="!formUser.valid" (click)="agregarUsuario()" >Guardar Usuario <i class="fa fa-user-plus" aria-hidden="true"></i></button>      
+        </div>        
+    </div>
+</div>
+	
+       
+        
+    
+    
+
+    
+</div>
+

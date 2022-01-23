@@ -1,0 +1,37 @@
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <br><br><br><br><br><br>
+                <div class="row">
+                <!-- Login Form -->
+                    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                        <input formControlName="email" type="text" autocomplete="off" class="fadeIn second" placeholder="correo@ejemplo.com" >
+                        <div class="mb-12" *ngIf="formLogin.get('email').errors && formLogin.get('email').dirty">
+                            <span class="alert-danger" *ngIf="formLogin.get('email').hasError('required')"> 
+                                El correo es un campo requerido
+                            </span>
+                            <span class="alert-danger" *ngIf="formLogin.get('email').errors.pattern"> 
+                                El formato del correo no es válido
+                            </span>
+                        </div>
+                        <input formControlName="password" type="password" autocomplete="off" class="fadeIn third" id="password" placeholder="*************">
+                            <div class="mb-12" *ngIf="formLogin.get('password').errors && formLogin.get('password').dirty">
+                                <span class="alert-danger" *ngIf="formLogin.get('password').hasError('required')"> 
+                                    La contraseña es requerida
+                                </span>
+                                <span class="alert-danger" *ngIf="formLogin.controls['password'].hasError('minlength')"> 
+                                    La contraseña debe tener 5 caracteres mínimo
+                                </span>
+                                <span class="alert-danger" *ngIf="formLogin.controls['password'].hasError('maxlength')"> 
+                                    La contraseña debe tener 10 caracteres máximo
+                                </span>
+                            </div>
+                        <button  type="submit" [disabled]="!formLogin.valid" class="fadeIn fourth" >Ingresar</button>
+                    </form>
+                </div>
+            </div>            
+        </div>
+</body>
+<FOOter>
+    Aarón Oteiza =)
+</FOOter>
